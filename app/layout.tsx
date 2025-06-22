@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
+import { inter } from "@/components/ui/font";
 
 export const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={` ${sora.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }
