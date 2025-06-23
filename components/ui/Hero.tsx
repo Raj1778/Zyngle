@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 interface VortexProps {
   children?: any;
@@ -21,7 +23,8 @@ interface VortexProps {
 export const Hero = (props: VortexProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | null>(null);
+
   const particleCount = props.particleCount || 700;
   const particlePropCount = 9;
   const particlePropsLength = particleCount * particlePropCount;
@@ -247,11 +250,10 @@ export const Hero = (props: VortexProps) => {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, []); 
-
+  }, []);
   return (
     <div className={cn("relative w-full h-screen", props.containerClassName)}>
-      
+      {/* Background Animation Canvas */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -261,8 +263,60 @@ export const Hero = (props: VortexProps) => {
         <canvas ref={canvasRef}></canvas>
       </motion.div>
 
+      {/* Top-Left Logo */}
+      <div className="absolute top-6 left-6 z-20">
+        <Link href="/">
+          <Image
+            src="/Zyngle_logo.jpeg"
+            alt="logo"
+            width={180}
+            height={60}
+            priority
+          />
+        </Link>
+      </div>
+
+      {/* Hero Content */}
       <div className={cn("relative z-10", props.className)}>
         {props.children}
+        <div className="flex flex-col items-center justify-center h-screen text-center">
+          <h1 className="text-7xl sm:text-8xl md:text-8xl font-extrabold bg-gradient-to-r from-fuchsia-400 via-purple-300 to-blue-400 text-transparent bg-clip-text drop-shadow-lg font-inter">
+            Vibe. Connect.
+          </h1>
+          <h1 className="text-7xl sm:text-8xl md:text-8xl font-extrabold bg-gradient-to-r from-blue-400 via-fuchsia-300 to-purple-300 text-transparent bg-clip-text drop-shadow-lg mt-4 font-inter">
+            Be Real.
+          </h1>
+
+          {/* Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                Join the Vibe
+              </span>
+            </button>
+
+            <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-700 via-pink-700 to-indigo-700 px-4 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                How it works
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

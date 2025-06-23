@@ -27,8 +27,11 @@ export const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Zyngle | Vibe. Connect. Be Real.",
+  title: "Zyngle",
   description: "Zyngle – your social space to be authentically real.",
+  icons: {
+    icon: "/favicon.jpeg",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${poppins.className} antialiased`}>{children}</body>
     </html>
   );
 }
