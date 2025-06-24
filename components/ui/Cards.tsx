@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
-import { HoverEffect } from "./Card";
+import { CardDemo } from "@/components/ui/Card";
 
 export const BackgroundBeamsWithCollision = ({
   children,
@@ -70,25 +70,24 @@ export const BackgroundBeamsWithCollision = ({
       ))}
 
       {/* HoverEffect UI */}
-      <div className="relative z-10 w-full max-w-7xl px-4 mt-20">
-        <HoverEffect
-          items={[
-            {
-              title: "🎨 Create Your Vibe Profile",
-              description:
-                "Pick your interests, drop memes, share your music taste, and post your unfiltered thoughts — this is where your digital vibe begins.",
-            },
-            {
-              title: "🤖 Get Matched With Your People",
-              description:
-                "Our AI connects you with people who match your energy using shared tags, tone of posts, and mutual interests — no swiping, no stress.",
-            },
-            {
-              title: "🌈 Talk. Post. Chill.",
-              description:
-                "Start chatting, post about your day, or join interest rooms. No pressure to impress — just real connections and low-key vibes.",
-            },
-          ]}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
+        <CardDemo
+          title="🎨 Create Your Vibe Profile"
+          description="Pick your interests, drop memes, share your music taste, and post your unfiltered thoughts — this is where your digital vibe begins."
+          bgImage="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-3b38-622f-a1c3-2b7a4be1eacb/raw?se=2025-06-24T07%3A01%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=dc940c22-6391-56f7-a71d-d66ec1f5908b&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-23T15%3A08%3A49Z&ske=2025-06-24T15%3A08%3A49Z&sks=b&skv=2024-08-04&sig=00YQvYk2dJdmR5mRejMoe8zGRtLQQaRFotWHw6htEfc%3D"
+          hoverImage="https://media.giphy.com/media/xT5LMzIK1AdZJ5yrnK/giphy.gif"
+        />
+        <CardDemo
+          title="🤖 Get Matched With Your People"
+          description="Our AI connects you with people who match your energy using shared tags, tone of posts, and mutual interests — no swiping, no stress."
+          bgImage="https://i.pinimg.com/736x/87/f5/3e/87f53e1cb910b0022cc26ed4bb5ecb1e.jpg"
+          hoverImage="https://i.pinimg.com/originals/6f/11/d6/6f11d625720b3ff9995b5b6731ddfa09.gif"
+        />
+        <CardDemo
+          title="🌈 Talk. Post. Chill."
+          description="Start chatting, post about your day, or join interest rooms. No pressure to impress — just real connections and low-key vibes."
+          bgImage="https://i.pinimg.com/736x/01/71/f6/0171f6b68cc3e2ae883311b0531a3139.jpg"
+          hoverImage="https://i.pinimg.com/originals/c9/11/0e/c9110e7526917fc1c3b4166b82ee9946.gif"
         />
       </div>
 
