@@ -30,9 +30,10 @@ export const metadata: Metadata = {
   title: "Zyngle",
   description: "Zyngle – your social space to be authentically real.",
   icons: {
-    icon: "/favicon.jpeg",
+    icon: "/favicon.ico",
   },
 };
+
 
 export default function RootLayout({
   children,
