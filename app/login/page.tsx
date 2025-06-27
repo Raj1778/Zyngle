@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/Input";
 import Link from "next/link";
@@ -8,22 +9,51 @@ import { cn } from "@/lib/utils";
 import WorldMapDemo from "@/components/ui/WorldMapDemo";
 
 export default function LoginPage() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log("Login data:", { email, password });
+
+    if (!email || !password) {
+      alert("❌ Please enter email and password");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "❌ Login failed");
+        return;
+      }
+
+      alert("✅ Login successful");
+      router.push("/dashboard"); // redirect to dashboard after login
+    } catch (err) {
+      alert("⚠️ Server error. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Animated background */}
       <div className="fixed inset-0 z-0">
         <WorldMapDemo />
       </div>
 
-      {/* Foreground: Login Form */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
           <h2 className="text-xl text-center font-bold text-neutral-800 dark:text-neutral-200">
@@ -57,16 +87,17 @@ export default function LoginPage() {
             </LabelInputContainer>
 
             <div className="text-right text-sm mb-4">
-              <Link href="" className="text-blue-400 hover:underline">
+              <Link href="#" className="text-blue-400 hover:underline">
                 Forgot password?
               </Link>
             </div>
 
             <button
               type="submit"
+              disabled={loading}
               className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
             >
-              Login &rarr;
+              {loading ? "Logging in..." : "Login →"}
               <BottomGradient />
             </button>
 
@@ -83,14 +114,12 @@ export default function LoginPage() {
   );
 }
 
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
-      <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
-    </>
-  );
-};
+const BottomGradient = () => (
+  <>
+    <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+    <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
+  </>
+);
 
 const LabelInputContainer = ({
   children,
