@@ -24,10 +24,10 @@ export default function SignupFormDemo() {
       {/* Foreground: Form */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 my-8">
         <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
-          <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+          <h2 className="text-xl text-center font-bold text-neutral-800 dark:text-neutral-200">
             Welcome to Zyngle ✨
           </h2>
-          <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+          <p className="mt-2 text-center max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
             Sign up to connect with real people.
           </p>
 
@@ -81,7 +81,7 @@ export default function SignupFormDemo() {
             </p>
 
             <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
-
+            <p className="text-md text-center m-4">Or, Sign up with</p>
             <div className="flex flex-col space-y-4">
               <button
                 className="group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"

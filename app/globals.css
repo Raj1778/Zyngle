@@ -192,7 +192,7 @@ html {
 }
 
 @theme inline {
-  --animate-scroll: scroll var(--animation-duration, 40s)
+  --animate-scroll: scroll var(--animation-duration, 100s)
     var(--animation-direction, forwards) linear infinite;
 
   @keyframes scroll {
@@ -207,4 +207,33 @@ html {
   --shadow-input: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
     0px 1px 0px 0px rgba(25, 28, 33, 0.02),
     0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+}
+/* Add to your global CSS */
+.scroller {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 1rem)) translateZ(0); /* Slower movement */
+  }
+}
+
+.animate-scroll {
+  will-change: transform;
+  animation: var(--animate-scroll);
+  backface-visibility: hidden;
+  animation-timing-function: linear;
+}
+
+/* Improved text rendering */
+.text-zinc-300,
+.text-zinc-400,
+.text-zinc-500 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
 }

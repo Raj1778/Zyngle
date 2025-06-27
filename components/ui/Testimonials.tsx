@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "slow", // Default to slow
   pauseOnHover = true,
   className,
 }: {
@@ -16,76 +16,88 @@ export const InfiniteMovingCards = ({
     title: string;
   }[];
   direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
+  speed?: "very-slow" | "slow" | "normal" | "fast"; // Added very-slow option
   pauseOnHover?: boolean;
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    addAnimation();
-  }, []);
-
   const [start, setStart] = useState(false);
 
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        scrollerRef.current!.appendChild(duplicatedItem);
+  useEffect(() => {
+    if (containerRef.current && scrollerRef.current && !start) {
+      const original = Array.from(scrollerRef.current.children);
+      original.forEach((item) => {
+        const clone = item.cloneNode(true);
+        scrollerRef.current!.appendChild(clone);
       });
-      getDirection();
-      getSpeed();
+
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        direction === "left" ? "normal" : "reverse"
+      );
+      containerRef.current.style.setProperty(
+        "--animation-duration",
+        speed === "fast"
+          ? "60s"
+          : speed === "normal"
+          ? "80s"
+          : speed === "slow"
+          ? "100s"
+          : "120s" // very-slow
+      );
+
       setStart(true);
     }
-  }
-
-  const getDirection = () => {
-    containerRef.current?.style.setProperty(
-      "--animation-direction",
-      direction === "left" ? "forwards" : "reverse"
-    );
-  };
-
-  const getSpeed = () => {
-    const duration =
-      speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
-    containerRef.current?.style.setProperty("--animation-duration", duration);
-  };
+  }, [start, direction, speed]);
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]", // Wider visible area
         className
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-4", // Increased gap
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
+        style={{
+          backfaceVisibility: "hidden",
+          willChange: "transform",
+        }}
       >
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <li
-            key={item.name}
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-zinc-700 bg-zinc-900 px-8 py-6 md:w-[450px] text-zinc-300 shadow-md"
+            key={item.name + idx}
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-zinc-700 bg-zinc-900 px-8 py-6 md:w-[450px] shadow-md"
+            style={{
+              transform: "translate3d(0,0,0)",
+              backfaceVisibility: "hidden",
+            }}
           >
             <blockquote>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-zinc-300">
+              <span
+                className="relative z-20 text-base leading-relaxed font-normal text-zinc-300" // Larger text size
+                style={{
+                  textRendering: "optimizeLegibility",
+                  WebkitFontSmoothing: "antialiased",
+                }}
+              >
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-semibold text-zinc-400">
+                  <span className="text-base leading-snug font-semibold text-zinc-400">
+                    {" "}
+                    {/* Larger text */}
                     {item.name}
                   </span>
-                  <span className="text-sm leading-[1.6] font-normal text-zinc-500">
+                  <span className="text-sm leading-snug font-normal text-zinc-500">
                     {item.title}
                   </span>
                 </span>
