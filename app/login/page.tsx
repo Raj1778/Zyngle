@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/Input";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import WorldMapDemo from "@/components/ui/WorldMapDemo";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -40,7 +39,7 @@ export default function LoginPage() {
       }
 
       alert("✅ Login successful");
-      router.push("/dashboard"); // redirect to dashboard after login
+      router.push("/dashboard");
     } catch (err) {
       alert("⚠️ Server error. Try again.");
     } finally {
@@ -49,77 +48,67 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <WorldMapDemo />
-      </div>
+    <div className="min-h-screen bg-[#0f0f0f] text-white flex items-center justify-center px-4">
+      <div className="bg-[#1a1a1a] border border-[#2a2a2a] shadow-md rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center">Welcome Back ✨</h2>
+        <p className="text-sm text-gray-400 text-center mt-1">
+          Login to continue using Zyngle.
+        </p>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-        <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
-          <h2 className="text-xl text-center font-bold text-neutral-800 dark:text-neutral-200">
-            Welcome Back ✨
-          </h2>
-          <p className="mt-2 text-center max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-            Login to continue using Zyngle.
+        <form className="mt-8" onSubmit={handleSubmit}>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="email" className="text-sm text-white">
+              Email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              type="email"
+              className="bg-[#2a2a2a] text-white placeholder-gray-400 border border-[#333]"
+              required
+            />
+          </LabelInputContainer>
+
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="password" className="text-sm text-white">
+              Password
+            </Label>
+            <Input
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              type="password"
+              className="bg-[#2a2a2a] text-white placeholder-gray-400 border border-[#333]"
+              required
+            />
+          </LabelInputContainer>
+
+          <div className="text-right text-sm mb-4">
+            <Link href="#" className="text-blue-400 hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-2 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white rounded-md hover:brightness-110 transition"
+          >
+            {loading ? "Logging in..." : "Login →"}
+          </button>
+
+          <p className="text-sm text-gray-400 text-center mt-4">
+            Don’t have an account?{" "}
+            <Link href="/signup" className="text-purple-400 hover:underline">
+              Sign up
+            </Link>
           </p>
-
-          <form className="my-8" onSubmit={handleSubmit}>
-            <LabelInputContainer className="mb-4">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                type="email"
-                required
-              />
-            </LabelInputContainer>
-
-            <LabelInputContainer className="mb-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                placeholder="••••••••"
-                type="password"
-                required
-              />
-            </LabelInputContainer>
-
-            <div className="text-right text-sm mb-4">
-              <Link href="#" className="text-blue-400 hover:underline">
-                Forgot password?
-              </Link>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
-            >
-              {loading ? "Logging in..." : "Login →"}
-              <BottomGradient />
-            </button>
-
-            <p className="text-sm text-center mt-4 text-neutral-600 dark:text-neutral-400">
-              Don’t have an account?{" "}
-              <Link href="/signup" className="underline text-blue-400">
-                Sign up
-              </Link>
-            </p>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   );
 }
-
-const BottomGradient = () => (
-  <>
-    <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
-    <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
-  </>
-);
 
 const LabelInputContainer = ({
   children,

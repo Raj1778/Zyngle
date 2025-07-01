@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
-import { inter } from "@/components/ui/font";
 
-export const geistSans = Geist({
+const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -14,13 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const poppins = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-poppins",
 });
 
-export const sora = Sora({
+const sora = Sora({
   subsets: ["latin"],
   weight: ["600", "700"],
   variable: "--font-sora",
@@ -34,14 +33,16 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${sora.variable}`}
+    >
       <body className={`${poppins.className} antialiased overflow-x-hidden`}>
         {children}
       </body>
