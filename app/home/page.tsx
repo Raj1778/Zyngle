@@ -3,6 +3,7 @@
 import React from "react";
 import Sidebar from "@/components/ui/Sidebar";
 import { FloatingDock } from "@/components/ui/dock";
+import ZyngleNavbar from "@/components/ui/Navbar";
 import {
   IconHome2,
   IconUser,
@@ -82,10 +83,12 @@ export default function Home() {
 
   return (
     <div className="dark">
+      <ZyngleNavbar />
+      {/* Sidebar */}
       <Sidebar links={sidebarLinks} />
 
       {/* Add left margin to accommodate fixed sidebar (width = 64 = 16rem) */}
-      <div className="ml-64 min-h-screen flex flex-col bg-gray-100 dark:bg-black text-black dark:text-white">
+      <div className="ml-64 pt-16 min-h-screen flex flex-col bg-gray-100 dark:bg-black text-black dark:text-white">
         <main className="flex-1 p-8">
           <h1 className="text-2xl font-bold mb-4">
             Welcome to Zyngle Home Page – This is your feed 🚀

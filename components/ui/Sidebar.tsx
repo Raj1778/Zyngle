@@ -13,7 +13,7 @@ type SidebarProps = {
 
 const Sidebar: React.FC<SidebarProps> = ({ links }) => {
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-neutral-900 text-white p-4 z-40">
+    <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-neutral-900 text-white p-4 z-40">
       <div className="space-y-4">
         {links.map((link) => (
           <a
