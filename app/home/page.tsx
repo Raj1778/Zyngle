@@ -45,12 +45,6 @@ export default function Home() {
       href: "/settings",
       icon: <IconSettings className="h-5 w-5 text-neutral-300" />,
     },
-
-    {
-      label: "Database",
-      href: "/database",
-      icon: <IconDatabase className="h-5 w-5 text-neutral-300" />,
-    },
   ];
 
   const dockLinks = [
