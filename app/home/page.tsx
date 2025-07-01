@@ -93,11 +93,11 @@ export default function Home() {
 
           <main className="flex-1 p-8">
             <h1 className="text-2xl font-bold mb-4">
-              Welcome to Zyngle Dashboard 🚀
+              Welcome to Zyngle Home Page - This is your feed
             </h1>
             <p className="text-neutral-600 dark:text-neutral-300">
-              Here's your main dashboard content. Add charts, widgets, posts, or
-              activity here.
+              You can view posts, chat with friends, and explore new content
+              here.
             </p>
           </main>
 
