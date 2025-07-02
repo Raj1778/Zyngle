@@ -157,7 +157,7 @@ export default function Home() {
   return (
     <div className="dark">
       <ZyngleNavbar />
-      <Sidebar links={sidebarLinks} />
+      <Sidebar />
 
       <div className="ml-64  pt-16 min-h-screen flex flex-col bg-gray-100 dark:bg-black text-black dark:text-white">
         <main className="flex-1 p-8">

@@ -11,7 +11,7 @@ const ZyngleNavbar: React.FC = () => {
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <Link
               href="#"
               className="text-xl font-bold text-blue-600 dark:text-blue-400"
