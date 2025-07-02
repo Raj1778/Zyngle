@@ -39,7 +39,7 @@ export default function LoginPage() {
       }
 
       alert("✅ Login successful");
-      router.push("/dashboard");
+      router.push("/home");
     } catch (err) {
       alert("⚠️ Server error. Try again.");
     } finally {

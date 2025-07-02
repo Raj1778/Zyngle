@@ -264,14 +264,15 @@ export const Hero = (props: VortexProps) => {
       </motion.div>
 
       {/* Top-Left Logo */}
-      <div className="absolute top-6 left-6 z-20">
+      <div className="absolute left-8 z-10">
         <Link href="/">
           <Image
-            src="/Zyngle_logo.jpeg"
+            src="/logo.png"
             alt="logo"
-            width={180}
-            height={60}
+            width={130}
+            height={30}
             priority
+            className="mt-0 p-0"
           />
         </Link>
       </div>

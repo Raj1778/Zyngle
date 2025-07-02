@@ -143,8 +143,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-@import "tailwindcss";
-
 @theme inline {
   --animate-first: moveVertical 30s ease infinite;
   --animate-second: moveInCircle 20s reverse infinite;
@@ -202,24 +200,11 @@ html {
     }
   }
 }
-@import "tailwindcss";
 
 @theme inline {
   --shadow-input:
     0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
     0px 0px 0px 1px rgba(25, 28, 33, 0.08);
-}
-/* Add to your global CSS */
-.scroller {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 1rem)) translateZ(0); /* Slower movement */
-  }
 }
 
 .animate-scroll {

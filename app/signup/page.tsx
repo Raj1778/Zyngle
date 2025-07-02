@@ -40,7 +40,7 @@ export default function SignupFormDemo() {
       }
 
       alert("✅ Account created successfully");
-      router.push("/login");
+      router.push("/home");
     } catch (err) {
       alert("⚠️ Server error. Try again.");
     } finally {
