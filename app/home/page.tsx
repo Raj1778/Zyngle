@@ -107,7 +107,7 @@ export default function Home() {
     {
       label: "Trending",
       href: "/tredning",
-      icon: <IconTrendingUp className="h-5 w-5 text-neutral-300" />,
+      icon: <IconTrendingUp className="h-5 w-5 text-neutral-300 " />,
     },
     {
       label: "Match",
@@ -275,7 +275,7 @@ export default function Home() {
 
             {/* Right Sidebar Wrapper */}
 
-            <div className="sticky left-2 right-12 top-24 w-64 m-2 px-3 overflow-y-auto max-h-[calc(100vh-5rem)] bg-white dark:bg-neutral-900 p-4 border-l dark:border-neutral-700 rounded-md shadow-md scrollbar-hide">
+            <div className="sticky left-2 right-12 top-24 w-64 m-3 px-3 overflow-y-auto max-h-[calc(100vh-5rem)] bg-white dark:bg-neutral-900 p-4 border-l dark:border-neutral-700 rounded-md shadow-md scrollbar-hide">
               <RightSidebar />
             </div>
           </div>
