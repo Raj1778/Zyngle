@@ -29,14 +29,14 @@ const ZyngleNavbar: React.FC = () => {
           <div className="flex-1 px-4 max-w-md hidden md:block">
             <input
               type="text"
-              placeholder="Search Zyngle..."
-              className="w-full px-3 py-2 rounded-xl bg-gray-100 dark:bg-neutral-800 text-black dark:text-white placeholder-gray-500 dark:placeholder-neutral-400 border border-gray-300 dark:border-neutral-700 focus:outline-none  hover:outline-none"
+              placeholder=" 🔍  Search Zyngle..."
+              className="w-full px-3 py-1.5 rounded-full bg-gray-100 dark:bg-neutral-800 text-black dark:text-white placeholder-gray-500 dark:placeholder-neutral-400 border border-gray-300 dark:border-neutral-700 focus:outline-none  hover:outline-none "
             />
           </div>
 
           {/* Right Side Buttons */}
           <div className="flex items-center gap-4">
-            <button className="text-sm px-5 py-2 rounded-md font-medium text-white bg-gradient-to-r from-fuchsia-700 to-blue-700 hover:from-fuchsia-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition">
+            <button className="text-sm px-5 py-2 rounded-2xl font-medium text-white bg-gradient-to-r from-fuchsia-700 to-blue-700 hover:from-fuchsia-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition">
               Login
             </button>
 
