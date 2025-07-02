@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({ links }) => {
           <a
             key={link.href}
             href={link.href}
-            className="flex items-center gap-2 text-sm hover:text-white text-neutral-300 hover:bg-neutral-800 p-2 rounded-md transition-colors duration-200"
+            className="flex items-center gap-2 text-md hover:text-white text-neutral-300 hover:bg-neutral-800 p-2 rounded-md transition-colors duration-200"
           >
             {link.icon}
             <span>{link.label}</span>
