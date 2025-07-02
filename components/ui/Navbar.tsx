@@ -36,7 +36,7 @@ const ZyngleNavbar: React.FC = () => {
 
           {/* Right Side Buttons */}
           <div className="flex items-center gap-4">
-            <button className="text-sm px-5 py-2 rounded-2xl font-medium text-white bg-gradient-to-r from-fuchsia-700 to-blue-700 hover:from-fuchsia-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition">
+            <button className="text-sm px-5 py-2 rounded-xl font-medium text-white bg-gradient-to-r from-fuchsia-700 via-pink-700 to-indigo-700 hover:from-fuchsia-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition">
               Login
             </button>
 

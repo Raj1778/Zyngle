@@ -44,7 +44,7 @@ const Sidebar: React.FC = () => {
           <a
             key={link.href}
             href={link.href}
-            className={`flex items-center gap-2 text-md hover:text-white text-neutral-300 hover:bg-neutral-800  ${link.label === "Trending" && "bg-neutral-800 text-white bg-gradient-to-r from-fuchsia-700 to-blue-700 hover:text-red-500"} p-2 rounded-md transition-colors duration-200`}
+            className={`flex items-center gap-2 text-md hover:text-white text-neutral-300 hover:bg-neutral-800  ${link.label === "Trending" && "bg-neutral-800 text-white bg-gradient-to-r from-fuchsia-700 via-pink-700 to-indigo-700 hover:text-red-500"} p-2 rounded-md transition-colors duration-200`}
           >
             {link.icon}
             <span>{link.label}</span>

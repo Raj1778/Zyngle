@@ -17,7 +17,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react";
-import RightSidebar from "@/components/RightSidebar";
+import RightSidebar from "@/components/ui/RightSidebar";
 
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
