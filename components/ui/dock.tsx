@@ -4,8 +4,17 @@
  * Mobile navbar is better positioned at bottom right.
  **/
 
+"use client";
+
 import { cn } from "@/lib/utils";
-import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+import {
+  IconCirclePlus,
+  IconHome2,
+  IconLayoutNavbarCollapse,
+  IconMessageCircle2,
+  IconSearch,
+  IconUser,
+} from "@tabler/icons-react";
 import {
   AnimatePresence,
   MotionValue,
@@ -14,34 +23,56 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-
 import { useRef, useState } from "react";
 
+// 🟡 You can now just use <FloatingDock /> directly without passing props
+
 export const FloatingDock = ({
-  items,
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} />
-      <FloatingDockMobile items={items} className={mobileClassName} />
+      <FloatingDockDesktop className={desktopClassName} />
+      <FloatingDockMobile className={mobileClassName} />
     </>
   );
 };
 
-const FloatingDockMobile = ({
-  items,
-  className,
-}: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
-  className?: string;
-}) => {
+const dockLinks = [
+  {
+    title: "Home",
+    icon: <IconHome2 className="h-full w-full text-neutral-300" />,
+    href: "/home",
+  },
+  {
+    title: "Search",
+    icon: <IconSearch className="h-full w-full text-neutral-300" />,
+    href: "/search",
+  },
+  {
+    title: "Create",
+    icon: <IconCirclePlus className="h-full w-full text-neutral-300" />,
+    href: "/create",
+  },
+  {
+    title: "Chat",
+    icon: <IconMessageCircle2 className="h-full w-full text-neutral-300" />,
+    href: "/chat",
+  },
+  {
+    title: "Profile",
+    icon: <IconUser className="h-full w-full text-neutral-300" />,
+    href: "/profile",
+  },
+];
+
+const FloatingDockMobile = ({ className }: { className?: string }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className={cn("relative block md:hidden", className)}>
       <AnimatePresence>
@@ -50,14 +81,11 @@ const FloatingDockMobile = ({
             layoutId="nav"
             className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
           >
-            {items.map((item, idx) => (
+            {dockLinks.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{
                   opacity: 0,
                   y: 10,
@@ -65,11 +93,10 @@ const FloatingDockMobile = ({
                     delay: idx * 0.05,
                   },
                 }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                transition={{ delay: (dockLinks.length - 1 - idx) * 0.05 }}
               >
                 <a
                   href={item.href}
-                  key={item.title}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
@@ -89,14 +116,9 @@ const FloatingDockMobile = ({
   );
 };
 
-const FloatingDockDesktop = ({
-  items,
-  className,
-}: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
-  className?: string;
-}) => {
-  let mouseX = useMotionValue(Infinity);
+const FloatingDockDesktop = ({ className }: { className?: string }) => {
+  const mouseX = useMotionValue(Infinity);
+
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -106,7 +128,7 @@ const FloatingDockDesktop = ({
         className
       )}
     >
-      {items.map((item) => (
+      {dockLinks.map((item) => (
         <IconContainer mouseX={mouseX} key={item.title} {...item} />
       ))}
     </motion.div>
@@ -124,41 +146,43 @@ function IconContainer({
   icon: React.ReactNode;
   href: string;
 }) {
-  let ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  let distance = useTransform(mouseX, (val) => {
-    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
+  const distance = useTransform(mouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
-  let heightTransformIcon = useTransform(
+  const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  const widthTransformIcon = useTransform(
+    distance,
+    [-150, 0, 150],
+    [20, 40, 20]
+  );
+  const heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
     [20, 40, 20]
   );
 
-  let width = useSpring(widthTransform, {
+  const width = useSpring(widthTransform, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
-  let height = useSpring(heightTransform, {
+  const height = useSpring(heightTransform, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
 
-  let widthIcon = useSpring(widthTransformIcon, {
+  const widthIcon = useSpring(widthTransformIcon, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
-  let heightIcon = useSpring(heightTransformIcon, {
+  const heightIcon = useSpring(heightTransformIcon, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
