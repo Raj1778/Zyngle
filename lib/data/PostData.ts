@@ -24,6 +24,7 @@ export const posts: PostProps[] = [
   {
     author: "Pallavi Jaiswal",
     caption: "Study grind never ends 💻☕",
+    imageUrl: "/PallaviStudy.webp",
     tags: ["study", "focus", "coffee"],
   },
   {
@@ -35,7 +36,7 @@ export const posts: PostProps[] = [
   },
   {
     author: "Suhani Gupta",
-    imageUrl: "/suhaniCoffee.webp",
+    imageUrl: "/SuhaniCoffee.jpg",
     caption: "Café catch-up with self ☕💬",
     tags: ["selfcare", "coffeebreak"],
   },
