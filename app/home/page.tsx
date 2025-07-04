@@ -19,6 +19,8 @@ import {
 } from "@tabler/icons-react";
 import RightSidebar from "@/components/ui/RightSidebar";
 import PostSection from "@/components/ui/PostSection";
+import Post from "@/components/ui/Post";
+import { posts } from "@/lib/data/PostData";
 
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -143,7 +145,13 @@ export default function Home() {
           <div className="relative grid grid-cols-[3fr_1fr] gap-6 mt-8">
             {/* Left Content */}
             <div>
-              <PostSection />
+              <PostSection>
+                <div className=" px-4 md:px-2 space-y-6">
+                  {posts.map((post, index) => (
+                    <Post key={index} {...post} />
+                  ))}
+                </div>
+              </PostSection>
             </div>
 
             {/* Right Sidebar Wrapper */}

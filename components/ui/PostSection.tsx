@@ -1,13 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const PostSection = () => {
-  return (
-    <>
-      <h1 className="text-2xl font-bold mb-4">
-        Welcome to Zyngle Home Page – This is your feed 🚀
-      </h1>
-    </>
-  );
+type PostSectionProps = {
+  children: ReactNode;
+};
+
+const PostSection: React.FC<PostSectionProps> = ({ children }) => {
+  return <section className="px-4 md:px-8 py-2">{children}</section>;
 };
 
 export default PostSection;
