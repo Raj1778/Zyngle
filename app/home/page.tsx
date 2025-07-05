@@ -61,23 +61,23 @@ export default function Home() {
       title: "Musk backs Trump after threat",
       description:
         "Musk credits Trump for Gaza ceasefire deal, praises efforts in bold online post.",
-      bgImage:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202507/musk-praises-trump-for-resolving-global-conflicts-reuters-020455409-16x9_0.jpg?VersionId=TvmdqTIn.W54qgo613gknoy3sN7Vv4YS&size=690:388",
+      bgImage: "",
+      // "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202507/musk-praises-trump-for-resolving-global-conflicts-reuters-020455409-16x9_0.jpg?VersionId=TvmdqTIn.W54qgo613gknoy3sN7Vv4YS&size=690:388",
     },
     {
       title: "NASA Plans Moon Base by 2030",
       description:
         "The Artemis mission sets sights on a permanent human base on the Moon.",
-      bgImage:
-        "https://images.newscientist.com/wp-content/uploads/2022/09/09152048/SEI_124263525.jpg",
+      bgImage: "",
+      // "https://images.newscientist.com/wp-content/uploads/2022/09/09152048/SEI_124263525.jpg",
     },
 
     {
       title: "Christopher Nolan’s The Odyssey Trailer",
       description:
         "The first look of Christopher Nolan’s much-awaited The Odyssey is finally out",
-      bgImage:
-        "https://images.news18.com/ibnlive/uploads/2025/07/news18-18-2025-07-a5ef172cf003083615f6673641b440b0-16x9.png?impolicy=website&width=640&height=360",
+      bgImage: "",
+      // ""https://images.news18.com/ibnlive/uploads/2025/07/news18-18-2025-07-a5ef172cf003083615f6673641b440b0-16x9.png?impolicy=website&width=640&height=360","
     },
     {
       title: "Panchayat Season 4 Released",
@@ -88,16 +88,16 @@ export default function Home() {
       title: "Diddy Verdict Stalls on Racketeering",
       description:
         "Jury to keep deliberating after Diddy case deadlocks on top charge.",
-      bgImage:
-        "https://external-preview.redd.it/jury-reaches-verdict-on-4-of-5-counts-in-diddy-trial-judge-v0-MTr6TYjgcU-N1e7Hvc0rTViJW2DWPsINSJDwb9g2EeA.jpeg?width=640&crop=smart&auto=webp&s=fd3dd13e096e00572eadfca506a15e5b745598bf",
+      bgImage: "",
+      // "https://external-preview.redd.it/jury-reaches-verdict-on-4-of-5-counts-in-diddy-trial-judge-v0-MTr6TYjgcU-N1e7Hvc0rTViJW2DWPsINSJDwb9g2EeA.jpeg?width=640&crop=smart&auto=webp&s=fd3dd13e096e00572eadfca506a15e5b745598bf",
     },
 
     {
       title: "Ex-Bangladesh PM Hasina Gets 6-Month Jail Term by ICT",
       description:
         "Bangladesh’s ICT sentenced former PM Sheikh Hasina to six months in jail in a contempt of court case, as reported by The Dhaka Tribune.",
-      bgImage:
-        "https://images.indianexpress.com/2025/05/Sheikh-Hasina-1_20250513212005.jpg?w=640",
+      bgImage: "",
+      // "https://images.indianexpress.com/2025/05/Sheikh-Hasina-1_20250513212005.jpg?w=640",
     },
   ];
 
