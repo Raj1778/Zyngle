@@ -61,13 +61,13 @@ export default function Home() {
     {
       quote:
         "This app doesn’t make you feel like you’re performing. You just *are*.",
-      name: "Abhishek Kumar Bandela",
+      name: "Abhishek Kumar",
       title: "Being real is finally cool 😌",
     },
     {
       quote:
         "If you're tired of curated feeds and fake smiles, Zyngle is your place.",
-      name: "Sathvik Dheer",
+      name: " Bandela Sathvik Dheer",
       title: "Real ones only zone 🔒",
     },
     {
@@ -83,7 +83,7 @@ export default function Home() {
     },
     {
       quote: "Zyngle made it easy to find chill people without the cringe.",
-      name: "Paras",
+      name: "Paras Bajaj",
       title: "Here for the vibes, stayed for the people.",
     },
     {

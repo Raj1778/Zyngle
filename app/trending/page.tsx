@@ -40,21 +40,83 @@ const spotifysongs = [
     bgImage: "/sabrina.jpg",
   },
   {
-    title: "Taylor Swift - Fortnight",
-    description: "Tortured Poets lead single",
-    bgImage: "/fortnight.jpeg",
+    title: "Back to friends",
+    description: "Sombr",
+    bgImage: "/sombr.jpeg",
   },
   {
-    title: "Diljit Dosanjh - Lover",
-    description: "Punjabi hit goes global",
-    bgImage: "/lover.jpeg",
+    title: "Shaky",
+    description: "Sanju Rathod",
+    bgImage: "/shaky.jpg",
+  },
+
+  {
+    title: "Finding Her",
+    description: "Kushagra, Bharath, Saaheal",
+    bgImage: "/findingher.jpeg",
   },
   {
     title: "Olivia Rodrigo - vampire",
     description: "Breakup anthem",
     bgImage: "/vampire.jpg",
   },
+
+  {
+    title: "Ordinary",
+    description: "Alex Warren",
+    bgImage: "/ordinary.jpg",
+  },
+  {
+    title: "Taylor Swift - Fortnight",
+    description: "Tortured Poets lead single",
+    bgImage: "/fortnight.jpeg",
+  },
 ];
+const netflixItems = [
+  {
+    title: "Squid Game Season 3",
+    description: "Deadlier games, higher stakes",
+    bgImage: "/squidgame3.jpg",
+  },
+  {
+    title: "Breaking Bad",
+    description: "Classic crime‑drama",
+    bgImage: "/breakingbad.jpg",
+  },
+  {
+    title: "The Old Guard 2",
+    description: "Charlize Theron action sequel",
+    bgImage: "/oldguard2.jpg",
+  },
+
+  { title: "Too Much", description: "Rom‑com series", bgImage: "/toomuch.jpg" },
+  {
+    title: "The Sandman Season 2",
+    description: "Fantasy drama, Ep 1–?",
+    bgImage: "/sandman2.jpeg",
+  },
+  {
+    title: "UNTAMED",
+    description: "Action‑drama series",
+    bgImage: "/untamed.jpg",
+  },
+  {
+    title: "My Melody & Kuromi",
+    description: "Anime—cute & dark",
+    bgImage: "/melody.jpg",
+  },
+  {
+    title: "Happy Gilmore 2",
+    description: "Adam Sandler comedy",
+    bgImage: "/happyg2.jpg",
+  },
+  {
+    title: "The Summer Hikaru Died",
+    description: "Horror‑anime thriller",
+    bgImage: "/hikaru.jpg",
+  },
+];
+
 function ScrollNewsRow({
   items,
   square = false,
@@ -63,27 +125,52 @@ function ScrollNewsRow({
   square?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = React.useState(false);
+  const [canScrollRight, setCanScrollRight] = React.useState(false);
+
+  const updateArrows = () => {
+    const el = ref.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
+  };
 
   const scroll = (dir: "left" | "right") => {
     if (!ref.current) return;
     ref.current.scrollBy({
-      left: dir === "left" ? -320 : 320, // Adjust this if needed
+      left: dir === "left" ? -300 : 300,
       behavior: "smooth",
     });
   };
 
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    updateArrows();
+    el.addEventListener("scroll", updateArrows);
+    window.addEventListener("resize", updateArrows);
+
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
+    };
+  }, []);
+
   return (
-    <div className="relative pt-2 pb-6">
-      <button
-        onClick={() => scroll("left")}
-        className="cursor-pointer absolute left-2 top-1/2 -translate-y-1/2 bg-zinc-800 p-2 rounded-full z-10 hover:bg-zinc-700"
-      >
-        <ChevronLeft className="w-5 h-5 text-white" />
-      </button>
+    <div className=" relative pt-2 pb-6   ">
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll("left")}
+          className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm"
+        >
+          <ChevronLeft className="text-white w-6 h-6" />
+        </button>
+      )}
 
       <div
         ref={ref}
-        className="flex gap-4 overflow-x-auto overflow-y-hidden px-10 scrollbar-hide scroll-smooth snap-x snap-mandatory"
+        className="flex overflow-x-auto gap-12 mb-2 pr-4 scroll-smooth snap-x snap-mandatory scrollbar-hide"
       >
         {items.map((n, i) => (
           <div
@@ -101,33 +188,36 @@ function ScrollNewsRow({
         ))}
       </div>
 
-      <button
-        onClick={() => scroll("right")}
-        className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 bg-zinc-800 p-2 rounded-full z-10 hover:bg-zinc-700"
-      >
-        <ChevronRight className="w-5 h-5 text-white" />
-      </button>
+      {canScrollRight && (
+        <button
+          onClick={() => scroll("right")}
+          className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm"
+        >
+          <ChevronRight className="text-white w-6 h-6" />
+        </button>
+      )}
     </div>
   );
 }
 
 export default function TrendingPage() {
   return (
-    <div className="bg-zinc-900 min-h-screen text-white px-8 lg:px-16 pt-8">
+    <div className="bg-zinc-900 min-h-screen text-white pt-8 overflow-y-hidden px-6">
+      {/* Netflix Row */}
       <section className="mb-12">
         <div className="flex items-center gap-4 mb-4">
           <Image
-            src="/ytlogo.png"
-            alt="YouTube"
+            src="/netflixlogo.png"
+            alt="Netflix"
             width={40}
             height={40}
             className="rounded-md"
           />
-          <h2 className="text-2xl font-semibold">YouTube</h2>
+          <h2 className="text-2xl font-semibold">Netflix</h2>
         </div>
-        <ScrollNewsRow items={ytvideos} />
+        <ScrollNewsRow items={netflixItems} square />
       </section>
-
+      {/* Spotify Row */}
       <section className="mb-12">
         <div className="flex items-center gap-4 mb-4">
           <Image
@@ -140,6 +230,20 @@ export default function TrendingPage() {
           <h2 className="text-2xl font-semibold">Spotify</h2>
         </div>
         <ScrollNewsRow items={spotifysongs} square />
+      </section>
+      {/* Youtube Row */}
+      <section className="mb-12">
+        <div className="flex items-center gap-4 mb-4">
+          <Image
+            src="/ytlogo.png"
+            alt="YouTube"
+            width={40}
+            height={40}
+            className="rounded-md"
+          />
+          <h2 className="text-2xl font-semibold">YouTube</h2>
+        </div>
+        <ScrollNewsRow items={ytvideos} />
       </section>
     </div>
   );

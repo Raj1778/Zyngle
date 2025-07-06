@@ -1,4 +1,3 @@
-// components/ui/NewsCard.tsx
 "use client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -22,15 +21,20 @@ export function NewsCard({
   return (
     <div
       className={cn(
-        "group relative rounded-md shadow-xl overflow-hidden w-full h-48",
+        "group relative rounded-md shadow-xl overflow-hidden w-full h-48 ",
         square ? "aspect-square" : "",
         className
       )}
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-90 transition-opacity duration-500"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
+      {bgImage && (
+        <Image
+          src={bgImage}
+          alt="Background"
+          fill
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          priority
+        />
+      )}
       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
       <div className="relative flex flex-col justify-end h-full z-10 px-2 my-1 text-white">
         <h1 className="font-bold text-sm truncate">{title}</h1>
