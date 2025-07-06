@@ -3,7 +3,6 @@
 A modern, responsive social media application built with cutting-edge web technologies.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![React](https://img.shields.io/badge/React-18+-61DAFB.svg?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-3178C6.svg?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0+-06B6D4.svg?logo=tailwindcss)
