@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
