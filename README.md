@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Zyngle – Your Vibe, Your Network
 
-## Getting Started
+Zyngle is a modern, dynamic social media platform built with **Next.js**, **Tailwind CSS**, and **TypeScript**. Whether you're vibing with friends, exploring trending posts, or sharing moments — Zyngle brings everything into one beautiful experience.
 
-First, run the development server:
+---
+
+## 🚀 Getting Started
+
+Run Zyngle locally in just a few steps:
+
+### 📥 Clone the Repository
 
 ```bash
+git clone https://github.com/Raj1778/zyngle.git
+cd zyngle
+
+📦 Install Dependencies
+Choose one package manager and install:
+
+bash
+Copy
+Edit
+# With npm
+npm install
+
+# Or with pnpm
+pnpm install
+
+# Or with yarn
+yarn
+⚙️ Start the Development Server
+bash
+Copy
+Edit
+# With npm
 npm run dev
-# or
-yarn dev
-# or
+
+# Or with pnpm
 pnpm dev
-# or
-bun dev
+
+# Or with yarn
+yarn dev
+Visit the app at 👉 http://localhost:3000
+
+✨ Features
+🧑‍🤝‍🧑 Feed with Posts, Captions & Reactions (❤️ 💬 🔁)
+
+🧭 Sidebar Navigation & Floating Dock
+
+🔍 Trending News Section with Horizontal Scroll
+
+📱 Fully Responsive (Mobile-first)
+
+🌗 Dark Mode Toggle
+
+📌 Routes for Trending, Profiles, Settings
+
+💅 Styled with Tailwind CSS
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
