@@ -46,6 +46,7 @@ export default function RootLayout({
     >
       <body className={`${poppins.className} antialiased overflow-x-hidden`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
