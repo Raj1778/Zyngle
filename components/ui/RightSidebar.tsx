@@ -22,7 +22,7 @@ export default function RightSidebar() {
     <div className="w-55 p-4 text-sm bg-white dark:bg-neutral-900 text-black dark:text-white  dark:border-neutral-700">
       {/* Trending */}
       <div className="mb-6">
-        <h2 className="font-bold mb-2 text-lg">Trending</h2>
+        <h2 className="font-bold mb-2 text-lg">Popular</h2>
         <ul className="space-y-2">
           {trending.map((topic, i) => (
             <li key={i} className="hover:underline cursor-pointer">

@@ -1,6 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import ClientLayout from "./ClientLayout";
 
 import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
 
@@ -45,7 +47,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${sora.variable}`}
     >
       <body className={`${poppins.className} antialiased overflow-x-hidden`}>
-        {children}
+        <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
     </html>

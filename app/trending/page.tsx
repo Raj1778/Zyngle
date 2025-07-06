@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { NewsCard } from "@/components/ui/NewsCard";
+import { FloatingDock } from "@/components/ui/dock";
 
 const ytvideos = [
   {
@@ -245,6 +246,7 @@ export default function TrendingPage() {
         </div>
         <ScrollNewsRow items={ytvideos} />
       </section>
+
     </div>
   );
 }

@@ -162,9 +162,6 @@ export default function Home() {
           </div>
         </main>
 
-        <div className="fixed bottom-6 left-0 right-0 flex justify-center md:justify-end md:pr-6 z-50">
-          <FloatingDock />
-        </div>
       </div>
     </div>
   );
