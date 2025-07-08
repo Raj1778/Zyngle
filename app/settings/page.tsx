@@ -170,7 +170,24 @@ export default function SettingsPage() {
     language: "English",
   });
 
-  const toggleSetting = (key: string) => {
+  // Define the type for your settings object
+  type Settings = {
+    darkMode: boolean;
+    notifications: boolean;
+    soundEnabled: boolean;
+    autoSync: boolean;
+    twoFactor: boolean;
+    profilePrivacy: string;
+    activityStatus: boolean;
+  };
+
+  // Create a type for only the keys that can be toggled (i.e., boolean)
+  type ToggleableSettingsKey = {
+    [K in keyof Settings]: Settings[K] extends boolean ? K : never;
+  }[keyof Settings];
+
+  // Update the function with the new type
+  const toggleSetting = (key: ToggleableSettingsKey) => {
     setSettings((prev) => ({
       ...prev,
       [key]: !prev[key],
