@@ -2,7 +2,7 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { NewsCard } from "@/components/ui/NewsCard";
 import { FloatingDock } from "@/components/ui/dock";
 
@@ -160,6 +160,7 @@ function ScrollNewsRow({
 
   return (
     <div className=" relative pt-2 pb-6   ">
+      <div></div>
       {canScrollLeft && (
         <button
           onClick={() => scroll("left")}
@@ -204,6 +205,11 @@ function ScrollNewsRow({
 export default function TrendingPage() {
   return (
     <div className="bg-zinc-900 min-h-screen text-white pt-8 overflow-y-hidden px-6">
+      <div className="px-1 pb-6 ">
+        <button className=" cursor-pointer bg-neutral-800 hover:bg-neutral-700 transition-colors duration-200 rounded-full p-2 flex items-center gap-2">
+          <ArrowLeft></ArrowLeft>
+        </button>
+      </div>
       {/* Netflix Row */}
       <section className="mb-12">
         <div className="flex items-center gap-4 mb-4">
@@ -246,7 +252,6 @@ export default function TrendingPage() {
         </div>
         <ScrollNewsRow items={ytvideos} />
       </section>
-
     </div>
   );
 }
